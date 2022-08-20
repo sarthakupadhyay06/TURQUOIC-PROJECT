@@ -109,22 +109,30 @@ class _addvideoState extends State<addvideo> {
                     ),
                     child: InkWell(
                       onTap: (){_recordVideo();},
-                      child: _isRecording ? Icon(Icons.stop):CircleAvatar(
+                      child: _isRecording ? Icon(Icons.stop,color:Colors.red):CircleAvatar(
                         backgroundColor: Colors.red,
                         radius: 100,
                         
                       )
                     ),
                    ),
-                   SizedBox(width:20),
-                   Column(
-                    children: [
-                         Image.network('https://cdn.pixabay.com/photo/2013/08/20/15/47/poppies-174276_960_720.jpg',
-                         height: 40,width: 35,),
-                         SizedBox(height: 5,),
-                         Text("upload",style:TextStyle(color: Colors.white,fontSize: 10))
-        
-                    ],
+                   SizedBox(width:12),
+                   InkWell(
+                    onTap: () {
+                    debugPrint('yessss');                    },
+                     child: Container(
+                      height: 60,
+                      width: 46,
+                       child: Column(
+                        children: [
+                         Image.network('https://icons.iconarchive.com/icons/gakuseisean/aire/32/Images-icon.png',
+                           ),
+                             SizedBox(height: 8,),
+                             Text("upload",style:TextStyle(color: Colors.white,fontSize: 12))
+                           
+                        ],
+                       ),
+                     ),
                    )
         
                ],) 
