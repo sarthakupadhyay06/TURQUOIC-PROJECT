@@ -1,6 +1,10 @@
 import 'package:addvideo/check.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'blocs/camerabloc.dart';
+import 'blocs/camerastate.dart';
 
 class addvideo extends StatefulWidget {
   addvideo({Key? key}) : super(key: key);
@@ -109,11 +113,21 @@ class _addvideoState extends State<addvideo> {
                     ),
                     child: InkWell(
                       onTap: (){_recordVideo();},
-                      child: _isRecording ? Icon(Icons.stop,color:Colors.red):CircleAvatar(
+                      child :BlocBuilder<cameraBloc, camerastate>(
+                        builder: (context, state) {
+                          if(state == _isRecording){return Icon(Icons.stop,color:Colors.red);}
+                          else{
+                            return CircleAvatar(
                         backgroundColor: Colors.red,
-                        radius: 100,
-                        
+                        radius: 100,); 
+                            }
+                        },
                       )
+                      ///_isRecording ? Icon(Icons.stop,color:Colors.red):CircleAvatar(
+                        //backgroundColor: Colors.red,
+                        //radius: 100,
+                        
+                      //)
                     ),
                    ),
                    SizedBox(width:12),
